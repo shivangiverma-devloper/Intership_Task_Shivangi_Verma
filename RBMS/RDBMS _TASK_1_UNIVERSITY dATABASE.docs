@@ -1,0 +1,61 @@
+STUDENT TABLE 
+
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    enrollment_date DATE NOT NULL,
+    department_id INT NOT NULL,
+    CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+);
+
+CREATE TABLE Enrollments (
+    enrollment_id INT PRIMARY KEY NOT NULL,
+    student_id INT NOT NULL,
+course_id INT Foreign key (references Courses)
+enrollment_date DATE Date  NOT NULL,
+grade VARCHAR(5) NOT NULL,
+    CONSTRAINT fk_enrollment_student FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
+
+INSERT INTO Students (student_id, first_name, last_name, email, phone, date_of_birth, enrollment_date, department_id)
+VALUES
+(1, 'Aarav', 'Sharma', 'aarav.sharma@example.com', '+91-9876543210', '2001-03-25', '2023-08-01', 101),
+(2, 'Anaya', 'Patel', 'anaya.patel@example.com', '+91-8765432109', '2002-05-10', '2022-07-15', 102),
+(3, 'Vihaan', 'Reddy', 'vihaan.reddy@example.com', '+91-7654321098', '2000-12-18', '2021-06-20', 103),
+(4, 'Ishika', 'Nair', 'ishika.nair@example.com', '+91-6543210987', '2001-09-07', '2023-01-12', 104),
+(5, 'Krishna', 'Mehta', 'krishna.mehta@example.com', '+91-5432109876', '2002-01-15', '2022-09-10', 105),
+(6, 'Aryan', 'Gupta', 'aryan.gupta@example.com', '+91-9876123450', '2001-08-11', '2022-05-25', 101),
+(7, 'Diya', 'Iyer', 'diya.iyer@example.com', '+91-8765432170', '2000-06-19', '2023-02-14', 102),
+(8, 'Rohan', 'Joshi', 'rohan.joshi@example.com', '+91-7654987123', '2001-10-01', '2021-09-30', 103),
+(9, 'Sneha', 'Pillai', 'sneha.pillai@example.com', '+91-6543789120', '2002-02-28', '2023-04-01', 104),
+(10, 'Karthik', 'Bhat', 'karthik.bhat@example.com', '+91-5432198760', '2000-09-13', '2022-06-15', 105),
+(11, 'Aditya', 'Deshmukh', 'aditya.deshmukh@example.com', '+91-9876543090', '2001-01-20', '2023-03-21', 101),
+(12, 'Priya', 'Malhotra', 'priya.malhotra@example.com', '+91-8765421098', '2000-11-02', '2022-08-22', 102),
+(13, 'Siddharth', 'Kapoor', 'siddharth.kapoor@example.com', '+91-7654310987', '2002-04-17', '2021-07-05', 103),
+(14, 'Aditi', 'Singh', 'aditi.singh@example.com', '+91-6543219876', '2001-12-08', '2023-05-18', 104),
+(15, 'Manav', 'Choudhary', 'manav.choudhary@example.com', '+91-5432109871', '2000-07-15', '2021-10-10', 105),
+(16, 'Tara', 'Menon', 'tara.menon@example.com', '+91-9123456789', '2002-06-09', '2022-11-12', 101),
+(17, 'Kabir', 'Roy', 'kabir.roy@example.com', '+91-8192736450', '2001-02-03', '2023-01-08', 102),
+(18, 'Meera', 'Rao', 'meera.rao@example.com', '+91-9987654321', '2000-05-27', '2022-07-19', 103),
+(19, 'Ansh', 'Verma', 'ansh.verma@example.com', '+91-9001234567', '2001-11-30', '2021-08-22', 104),
+(20, 'Pooja', 'Kumar', 'pooja.kumar@example.com', '+91-9876123098', '2000-03-21', '2023-06-01', 105);
+
+
+
+INSERT INTO Professors (professor_id, first_name, last_name, email, phone)
+VALUES
+(1, 'Rajesh', 'Kumar', 'rajesh.kumar@university.com', '+91-9876543210'),
+(2, 'Anjali', 'Sharma', 'anjali.sharma@university.com', '+91-8765432109'),
+(3, 'Vikram', 'Reddy', 'vikram.reddy@university.com', '+91-7654321098'),
+(4, 'Meena', 'Nair', 'meena.nair@university.com', '+91-6543210987'),
+(5, 'Arun', 'Patel', 'arun.patel@university.com', '+91-5432109876'),
+(6, 'Priya', 'Iyer', 'priya.iyer@university.com', '+91-9123456789'),
+(7, 'Suresh', 'Joshi', 'suresh.joshi@university.com', '+91-8192736450'),
+(8, 'Neha', 'Verma', 'neha.verma@university.com', '+91-9987654321'),
+(9, 'Amit', 'Desai', 'amit.desai@university.com', '+91-9001234567'),
+(10, 'Sneha', 'Choudhary', 'sneha.choudhary@university.com', '+91-9876123098');
+
