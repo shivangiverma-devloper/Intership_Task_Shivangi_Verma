@@ -1,0 +1,198 @@
+
+Task +AD0APg- 1 
+
+STUDENT TABLE 
+
+CREATE TABLE Students (
+    student+AF8-id INT PRIMARY KEY NOT NULL,
+    first+AF8-name VARCHAR(100) NOT NULL,
+    last+AF8-name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    date+AF8-of+AF8-birth DATE NOT NULL,
+    enrollment+AF8-date DATE NOT NULL,
+    department+AF8-id INT NOT NULL,
+    CONSTRAINT fk+AF8-department FOREIGN KEY (department+AF8-id) REFERENCES Departments(department+AF8-id)
+)+ADs-
+
+CREATE TABLE Enrollments (
+    enrollment+AF8-id INT PRIMARY KEY NOT NULL,
+    student+AF8-id INT NOT NULL,
+course+AF8-id INT Foreign key (references Courses)
+enrollment+AF8-date DATE Date  NOT NULL,
+grade VARCHAR(5) NOT NULL,
+    CONSTRAINT fk+AF8-enrollment+AF8-student FOREIGN KEY (student+AF8-id) REFERENCES Students(student+AF8-id)
+)+ADs-
+
+INSERT INTO Students (student+AF8-id, first+AF8-name, last+AF8-name, email, phone, date+AF8-of+AF8-birth, enrollment+AF8-date, department+AF8-id)
+VALUES
+(1, 'Aarav', 'Sharma', 'aarav.sharma+AEA-example.com', '9876543210', '2001-03-25', '2023-08-01', 101),
+(2, 'Anaya', 'Patel', 'anaya.patel+AEA-example.com', '8765432109', '2002-05-10', '2022-07-15', 102),
+(3, 'Vihaan', 'Reddy', 'vihaan.reddy+AEA-example.com', '7654321098', '2000-12-18', '2021-06-20', 103),
+(4, 'Ishika', 'Nair', 'ishika.nair+AEA-example.com', '6543210987', '2001-09-07', '2023-01-12', 104),
+(5, 'Krishna', 'Mehta', 'krishna.mehta+AEA-example.com', '5432109876', '2002-01-15', '2022-09-10', 105),
+(6, 'Aryan', 'Gupta', 'aryan.gupta+AEA-example.com', '9876123450', '2001-08-11', '2022-05-25', 101),
+(7, 'Diya', 'Iyer', 'diya.iyer+AEA-example.com', '8765432170', '2000-06-19', '2023-02-14', 102),
+(8, 'Rohan', 'Joshi', 'rohan.joshi+AEA-example.com', '7654987123', '2001-10-01', '2021-09-30', 103),
+(9, 'Sneha', 'Pillai', 'sneha.pillai+AEA-example.com', '6543789120', '2002-02-28', '2023-04-01', 104),
+(10, 'Karthik', 'Bhat', 'karthik.bhat+AEA-example.com', '5432198760', '2000-09-13', '2022-06-15', 105),
+(11, 'Aditya', 'Deshmukh', 'aditya.deshmukh+AEA-example.com', '9876543090', '2001-01-20', '2023-03-21', 101),
+(12, 'Priya', 'Malhotra', 'priya.malhotra+AEA-example.com', '8765421098', '2000-11-02', '2022-08-22', 102),
+(13, 'Siddharth', 'Kapoor', 'siddharth.kapoor+AEA-example.com', '7654310987', '2002-04-17', '2021-07-05', 103),
+(14, 'Aditi', 'Singh', 'aditi.singh+AEA-example.com', '6543219876', '2001-12-08', '2023-05-18', 104),
+(15, 'Manav', 'Choudhary', 'manav.choudhary+AEA-example.com', '5432109871', '2000-07-15', '2021-10-10', 105),
+(16, 'Tara', 'Menon', 'tara.menon+AEA-example.com', '9123456789', '2002-06-09', '2022-11-12', 101),
+(17, 'Kabir', 'Roy', 'kabir.roy+AEA-example.com', '8192736450', '2001-02-03', '2023-01-08', 102),
+(18, 'Meera', 'Rao', 'meera.rao+AEA-example.com', '9987654321', '2000-05-27', '2022-07-19', 103),
+(19, 'Ansh', 'Verma', 'ansh.verma+AEA-example.com', '9001234567', '2001-11-30', '2021-08-22', 104),
+(20, 'Pooja', 'Kumar', 'pooja.kumar+AEA-example.com', '9876123098', '2000-03-21', '2023-06-01', 105)+ADs-
+
+
+
+INSERT INTO Professors (professor+AF8-id, first+AF8-name, last+AF8-name, email, phone)
+VALUES
+(1, 'Rajesh', 'Kumar', 'rajesh.kumar+AEA-university.com', '9876543210'),
+(2, 'Anjali', 'Sharma', 'anjali.sharma+AEA-university.com', '8765432109'),
+(3, 'Vikram', 'Reddy', 'vikram.reddy+AEA-university.com', '7654321098'),
+(4, 'Meena', 'Nair', 'meena.nair+AEA-university.com', '6543210987'),
+(5, 'Arun', 'Patel', 'arun.patel+AEA-university.com', '5432109876'),
+(6, 'Priya', 'Iyer', 'priya.iyer+AEA-university.com', '9123456789'),
+(7, 'Suresh', 'Joshi', 'suresh.joshi+AEA-university.com', '8192736450'),
+(8, 'Neha', 'Verma', 'neha.verma+AEA-university.com', '9987654321'),
+(9, 'Amit', 'Desai', 'amit.desai+AEA-university.com', '9001234567'),
+(10, 'Sneha', 'Choudhary', 'sneha.choudhary+AEA-university.com', '9876123098')+ADs-
+
+INSERT INTO Enrollment (enrollment+AF8-id, student+AF8-id, course+AF8-id, enrollment+AF8-date, grade)
+VALUES 
+(1, 1, 501, '2025-01-01', 'A'),
+(2, 2, 502, '2025-01-02', 'B+-'),
+(3, 3, 503, '2025-01-03', 'A-'),
+(4, 4, 504, '2025-01-04', 'B'),
+(5, 5, 505, '2025-01-05', 'A+-'),
+(6, 6, 506, '2025-01-06', 'C'),
+(7, 7, 507, '2025-01-07', 'B-'),
+(8, 8, 508, '2025-01-08', 'A'),
+(9, 9, 509, '2025-01-09', 'A-'),
+(10,10, 510, '2025-01-10', 'B+-')+ADs-
+
+INSERT INTO +AGA-courses+AGA-(+AGA-course+AF8-id+AGA-, +AGA-course+AF8-name+AGA-, +AGA-department+AF8-id+AGA-, +AGA-professor+AF8-id+AGA-, +AGA-credits+AGA-) 
+VALUES 
+(501, 'Math', 101, 1, 3),
+(502, 'Science', 102, 2, 4),
+(503, 'History', 103, 3, 3),
+(504, 'Art', 104, 4, 2),
+(505, 'Music', 105, 5, 3),
+(506, 'Physics', 106, 6, 4),
+(507, 'Chemistry', 107, 7, 4),
+(508, 'Biology', 108, 8, 3),
+(509, 'Economics', 109, 9, 3),
+(510, 'Psychology', 110, 10, 3)+ADs-
+
+
+TASK +AD0APg- 1 ANSWER QUERY
+
+1+AF0-. SELECT d.department+AF8-name, COUNT(s.student+AF8-id) AS total+AF8-students
+FROM Departments d
+LEFT JOIN Students s ON d.department+AF8-id +AD0- s.department+AF8-id
+GROUP BY d.department+AF8-name+ADs-
+
+department+AF8-name total+AF8-students Biotechnology0Business Administration0Chemical Engineering0Civil Engineering2Computer Science2Data Science0Electrical Engineering2Electronics and Communication2Information Technology0Mechanical Engineering2
+2+AF0-. SELECT c.course+AF8-id, c.course+AF8-name, d.department+AF8-name, c.credits
+FROM Courses c
+JOIN Departments d ON c.department+AF8-id +AD0- d.department+AF8-id
+WHERE c.professor+AF8-id +AD0- 101+ADs-
+
+3+AF0-. SELECT 
+    c.course+AF8-id, 
+    c.course+AF8-name,
+    AVG(
+        CASE 
+            WHEN e.grade +AD0- 'A' THEN 4
+            WHEN e.grade +AD0- 'B+-' THEN 3.5
+            WHEN e.grade +AD0- 'B' THEN 3
+            WHEN e.grade +AD0- 'C+-' THEN 2.5
+            WHEN e.grade +AD0- 'C' THEN 2
+            WHEN e.grade +AD0- 'D' THEN 1
+            WHEN e.grade +AD0- 'F' THEN 0
+            ELSE NULL
+        END
+    ) AS average+AF8-grade
+FROM Enrollment e
+JOIN Courses c ON e.course+AF8-id +AD0- c.course+AF8-id
+GROUP BY c.course+AF8-id, c.course+AF8-name+ADs-
+course+AF8-id course+AF8-name average+AF8-grade 501Math4.00000502Science3.50000503HistoryNULL504Art3.00000505MusicNULL506Physics2.00000507ChemistryNULL508Biology4.00000509EconomicsNULL510Psychology3.50000
+
+4+AF0-. SELECT s.student+AF8-id, s.student+AF8-name
+FROM Students s
+LEFT JOIN Enrollment e ON s.student+AF8-id +AD0- e.student+AF8-id
+WHERE e.student+AF8-id IS NULL+ADs-
+
+student+AF8-id 	first+AF8-name 	last+AF8-name
+ 	10     Karthik 	  Bhat5+AF0-. SELECT d.department+AF8-name, COUNT(c.course+AF8-id) AS total+AF8-courses
+FROM Departments d
+LEFT JOIN Courses c ON d.department+AF8-id +AD0- c.department+AF8-id
+GROUP BY d.department+AF8-name+ADs-
+
+department+AF8-name total+AF8-courses Biotechnology1Business Administration1Chemical Engineering1Civil Engineering1Computer Science1Data Science1Electrical Engineering1Electronics and Communication1Information Technology1Mechanical Engineering1
+6+AF0-. SELECT s.student+AF8-id, s.student+AF8-name
+FROM Students s
+JOIN Enrollment e ON s.student+AF8-id +AD0- e.student+AF8-id
+JOIN Courses c ON e.course+AF8-id +AD0- c.course+AF8-id
+WHERE c.course+AF8-name +AD0- 'Database Systems'+ADs-
+
+7+AF0-. SELECT c.course+AF8-id, c.course+AF8-name, COUNT(e.student+AF8-id) AS enrollment+AF8-count
+FROM Courses c
+JOIN Enrollment e ON c.course+AF8-id +AD0- e.course+AF8-id
+GROUP BY c.course+AF8-id, c.course+AF8-name
+ORDER BY enrollment+AF8-count DESC
+LIMIT 1+ADs-
+
+course+AF8-id  course+AF8-name     enrollment+AF8-count 501             Math    1
+8+AF0-. SELECT d.department+AF8-name, AVG(c.credits) AS average+AF8-credits+AF8-per+AF8-student
+FROM Students s
+JOIN Departments d ON s.department+AF8-id +AD0- d.department+AF8-id
+JOIN Enrollment e ON s.student+AF8-id +AD0- e.student+AF8-id
+JOIN Courses c ON e.course+AF8-id +AD0- c.course+AF8-id
+GROUP BY d.department+AF8-name+ADs- 
+department+AF8-name average+AF8-credits+AF8-per+AF8-student Civil Engineering2.5000Computer Science3.5000Electrical Engineering3.0000Electronics and Communication3.0000Mechanical Engineering4.0000
+
+9+AF0-. SELECT p.professor+AF8-id,p.first+AF8-name,
+p.last+AF8-name FROM professor JOIN Courses c ON p.professor+AF8-id +AD0-c.professor+AF8-id
+JOIN Departments d ON c.department+AF8-id +AD0- d.department+AF8-id
+GROUP BY p.professor+AF8-id, p.first+AF8-name,p.last+AF8-name
+HAVING COUNT(DISTINCT c.department+AF8-id) +AD4- 1+ADs-
+10+AF0-. SELECT c.course+AF8-name,
+    MAX(
+        CASE 
+            WHEN e.grade +AD0- 'A+-' THEN 4.0
+            WHEN e.grade +AD0- 'A' THEN 4.0
+            WHEN e.grade +AD0- 'A-' THEN 3.7
+            WHEN e.grade +AD0- 'B+-' THEN 3.5
+            WHEN e.grade +AD0- 'B' THEN 3.0
+            WHEN e.grade +AD0- 'B-' THEN 2.7
+            WHEN e.grade +AD0- 'C' THEN 2.0
+            WHEN e.grade +AD0- 'C-' THEN 1.7
+            WHEN e.grade +AD0- 'D' THEN 1.0
+            WHEN e.grade +AD0- 'F' THEN 0.0
+            ELSE NULL
+        END
+    ) AS highest+AF8-grade,
+    MIN(
+        CASE 
+            WHEN e.grade +AD0- 'A+-' THEN 4.0
+            WHEN e.grade +AD0- 'A' THEN 4.0
+            WHEN e.grade +AD0- 'A-' THEN 3.7
+            WHEN e.grade +AD0- 'B+-' THEN 3.5
+            WHEN e.grade +AD0- 'B' THEN 3.0
+            WHEN e.grade +AD0- 'B-' THEN 2.7
+            WHEN e.grade +AD0- 'C' THEN 2.0
+            WHEN e.grade +AD0- 'C-' THEN 1.7
+            WHEN e.grade +AD0- 'D' THEN 1.0
+            WHEN e.grade +AD0- 'F' THEN 0.0
+            ELSE NULL
+        END
+    ) AS lowest+AF8-grade
+FROM Enrollment e
+JOIN Courses c ON e.course+AF8-id +AD0- c.course+AF8-id
+WHERE c.course+AF8-name +AD0- 'Music'+ADs-
+course+AF8-name highest+AF8-grade lowest+AF8-grade Music4.04.0
