@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Quiz App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .list-group-item {
+            cursor: pointer;
+        }
+
+        .list-group-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .rules {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="start-screen">
+        <h2 class="text-center">Welcome to the Quiz!</h2>
+        <button class="btn btn-primary w-100 mt-4" onclick="showRules()">Start Quiz</button>
+    </div>
+    <div id="rules-screen" class="d-none">
+        <h3 class="text-center">Quiz Rules</h3>
+        <ul class="rules">
+            <li>You will have only 15 seconss per each question.</li>
+            <li>Once you select you answer.it cant'be undone.</li>
+            <li>You can't select any option once time goes off.</li>
+           <li>You can't exit from the quiz while you're playing.</li>
+           <li>You'll get points on the basis of your correct answer.</li>
+        </ul>
+        <button class="btn btn-success w-100" onclick="startQuiz()">Proceed to Quiz</button>
+    </div>
+    <div id="quiz" class="d-none">
+        <h2 id="question" class="mb-4"></h2>
+        <ul id="options" class="list-group"></ul>
+        <button id="next-btn" class="btn btn-primary mt-3" onclick="nextQuestion()" disabled>Next</button>
+    </div>
+    <div id="result" class="text-center d-none">
+        <h2>Quiz Completed!</h2>
+        <p id="score" class="mt-3"></p>
+        <button class="btn btn-success" onclick="restartQuiz()">Replay Quiz</button>
+        <button class="btn btn-danger" onclick="quitQuiz()">Quit Quiz</button>
+    </div>
+</div>
+
+<script>
+const questions = [
+    {
+        question: "What is the capital of France?",
+        options: ["Berlin", "London", "Paris", "Madrid"],
+        answer: "Paris"
+    },
+    {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        answer: "Mars"
+    },
+    {
+        question: "What is the largest ocean on Earth?",
+        options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+        answer: "Pacific Ocean"
+    },
+    {
+        question: "What is the capital of Japan?",
+        options: ["Seoul", "Tokyo", "Beijing", "Bangkok"],
+        answer: "Tokyo"
+    },
+    {
+        question: "Which element has the chemical symbol 'O'?",
+        options: ["Oxygen", "Gold", "Osmium", "Opal"],
+        answer: "Oxygen"
+    }
+    // Add more questions up to 20 if needed.
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function showRules() {
+    document.getElementById('start-screen').classList.add('d-none');
+    document.getElementById('rules-screen').classList.remove('d-none');
+}
+
+function startQuiz() {
+    document.getElementById('rules-screen').classList.add('d-none');
+    document.getElementById('quiz').classList.remove('d-none');
+    loadQuestion();
+}
+
+function loadQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById('question').innerText = currentQuestion.question;
+    const optionsContainer = document.getElementById('options');
+    optionsContainer.innerHTML = '';
+    currentQuestion.options.forEach(option => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerText = option;
+        li.onclick = () => selectOption(li, currentQuestion.answer);
+        optionsContainer.appendChild(li);
+    });
+    document.getElementById('next-btn').disabled = true;
+}
+
+function selectOption(selectedElement, correctAnswer) {
+    const options = document.querySelectorAll('.list-group-item');
+    options.forEach(option => {
+        option.onclick = null;
+        option.classList.remove('list-group-item-success', 'list-group-item-danger');
+    });
+    if (selectedElement.innerText === correctAnswer) {
+        selectedElement.classList.add('list-group-item-success');
+        score++;
+    } else {
+        selectedElement.classList.add('list-group-item-danger');
+        options.forEach(option => {
+            if (option.innerText === correctAnswer) {
+                option.classList.add('list-group-item-success');
+            }
+        });
+    }
+    document.getElementById('next-btn').disabled = false;
+}
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById('quiz').classList.add('d-none');
+    document.getElementById('result').classList.remove('d-none');
+    document.getElementById('score').innerText = `Sorry, you got ${score} out of ${questions.length}`;
+}
+
+function restartQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById('result').classList.add('d-none');
+    document.getElementById('start-screen').classList.remove('d-none');
+}
+
+function quitQuiz() {
+    alert('Thank you for participating!');
+    location.reload();
+}
+
+window.onload = () => {
+    document.getElementById('start-screen').classList.remove('d-none');
+};
+</script>
+
+</body>
+</html>
